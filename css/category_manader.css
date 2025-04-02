@@ -1,0 +1,54 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.navBar {
+    display: flex;
+    width: 1440px;
+    height: 88;
+    gap: 32px;
+    border-width: 1px;
+    padding-top: 16px;
+    padding-right: 160px;
+    padding-bottom: 16px;
+    padding-left: 160px;
+
+}
+ .main_logo {
+    width: 96px;
+    height: ;
+    padding: 28 38.2 160 1184.05px;
+
+}
+.search_input {
+    background-color: #F5F5F5;
+    width: 433px;
+    height: 56px;
+    gap: 8px;
+    border-radius: 8px;
+    padding: 16px;
+
+}
+.links  a {
+    display: flex;
+    text-decoration: none;
+}
+.main_icons {
+    width: 32px;
+    height: 32px;
+    gap: 24px;
+
+} */
+
+/* .navBar_bottom{
+    background-color: #2E2E2E;
+    width: 1440px;
+    height: 48px;
+    justify-content: space-between;
+    padding-top: 8px;
+    padding-right: 160px;
+    padding-bottom: 8px;
+    padding-left: 160px;
+
+} */

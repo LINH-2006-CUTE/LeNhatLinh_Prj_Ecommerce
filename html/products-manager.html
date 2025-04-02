@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý danh mục sản phẩm</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      .sidebar {
+        min-height: 100vh;
+        background-color: #f8f9fa;
+      }
+      .status-active {
+        color: green;
+      }
+      .status-inactive {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Container chính -->
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-2 sidebar">
+          <div class="p-3">
+            <h5 class="text-danger">
+              <i class="fas fa-shopping-cart"></i> Ecommerce
+            </h5>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href=""
+                  ><i class="fas fa-chart-bar"></i> Thống kê</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href=""
+                  ><i class="fas fa-list"></i> Danh mục</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href=""
+                  ><i class="fas fa-box"></i> Sản phẩm</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="col-md-10">
+          <!-- Header -->
+          <header
+            class="d-flex justify-content-between align-items-center p-3 bg-light border-bottom"
+          >
+            <h4>DANH MỤC</h4>
+            <div class="d-flex align-items-center">
+              <span class="me-3">Đang hoạt động</span>
+              <div class="dropdown">
+                <button
+                  class="btn btn-light dropdown-toggle"
+                  type="button"
+                  id="userDropdown"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="fas fa-user"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" href="#">Thông tin cá nhân</a>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                </ul>
+              </div>
+            </div>
+          </header>
+
+          <!-- Nội dung -->
+          <div class="p-3">
+            <div class="d-flex justify-content-between mb-3">
+              <div>
+                <button
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#addCategoryModal"
+                >
+                  Thêm mới danh mục
+                </button>
+              </div>
+              <div class="d-flex">
+                <select class="form-select me-2" style="width: 150px">
+                  <option>Đang hoạt động</option>
+                  <option>Ngừng hoạt động</option>
+                </select>
+                <input
+                  type="text"
+                  class="form-control me-2"
+                  placeholder="Tìm kiếm danh mục theo tên"
+                  style="width: 250px"
+                />
+                <button class="btn btn-outline-secondary">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Bảng danh mục -->
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Mã danh mục <i class="fas fa-sort"></i></th>
+                  <th>Tên danh mục <i class="fas fa-sort"></i></th>
+                  <th>Tất cả</th>
+                  <th>Chức năng</th>
+                </tr>
+              </thead>
+              <tbody id="categoryTable"></tbody>
+            </table>
+
+            <!-- Phân trang -->
+            <nav aria-label="Page navigation">
+              <ul class="pagination justify-content-center" id="pagination">
+                <!-- Phân trang sẽ được tạo động bằng JavaScript -->
+              </ul>
+            </nav>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Modal "THÊM" -->
+    <div
+      class="modal fade"
+      id="addCategoryModal"
+      tabindex="-1"
+      aria-labelledby="addCategoryModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addCategoryModalLabel">
+              Thêm mới danh mục
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="addCategoryForm">
+              <div class="mb-3">
+                <label for="categoryCode" class="form-label">Mã danh mục</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="categoryCode"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="categoryName" class="form-label"
+                  >Tên danh mục</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="categoryName"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="categoryStatus" class="form-label"
+                  >Trạng thái</label
+                >
+                <select class="form-select" id="categoryStatus">
+                  <option value="active">Đang hoạt động</option>
+                  <option value="inactive">Ngừng hoạt động</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Đóng
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="addCategory()"
+            >
+              Thêm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cập nhật danh mục -->
+    <div
+      class="modal fade"
+      id="editCategoryModal"
+      tabindex="-1"
+      aria-labelledby="editCategoryModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editCategoryModalLabel">
+              Cập nhật danh mục
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="editCategoryForm">
+              <div class="mb-3">
+                <label for="editCategoryCode" class="form-label"
+                  >Mã danh mục</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editCategoryCode"
+                  readonly
+                />
+              </div>
+              <div class="mb-3">
+                <label for="editCategoryName" class="form-label">Tên danh mục</label>
+                <input type="text" class="form-control" id="editCategoryName" required />
+              </div>
+              <div class="mb-3">
+                <label for="editCategoryStatus" class="form-label">Trạng thái</label>
+                <select class="form-select" id="editCategoryStatus">
+                  <option value="active">Đang hoạt động</option>
+                  <option value="inactive">Ngừng hoạt động</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Đóng
+            </button>
+            <button type="button" class="btn btn-primary" onclick="updateCategory()">
+              Cập nhật
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

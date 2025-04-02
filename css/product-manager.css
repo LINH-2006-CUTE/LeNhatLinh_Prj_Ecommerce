@@ -1,0 +1,10 @@
+.sidebar {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
+  .status-active {
+    color: green;
+  }
+  .status-inactive {
+    color: red;
+  }
