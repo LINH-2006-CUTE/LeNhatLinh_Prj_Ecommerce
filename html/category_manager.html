@@ -1,49 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Quản lý danh mục sản phẩm</title>
     <link rel="stylesheet" href="../css/category_manader.css" />
   </head>
   <body>
-    <script src="../js/category_manager.js"></script>
-
-    <!-- Phần navbar -->
-    <div class="navBar">
-      <div class="main_logo">
-        <img src="../assets/icons/logo_main.png" alt="mainLogo" />
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <img src="../assets/icons/fire.png" alt="Logo" class="logo" />
+        <h2>Ecommerce</h2>
       </div>
-
-      <div class="search_input">
-        <form>
-          <input type="text" id="search" placeholder="Tìm kiếm" />
-          <img src="../assets/icons/Search.png" alt="searchIcon" />
-        </form>
-      </div>
-
-      <div class="links">
-        <nav>
-          <a href="">Trang chủ</a>
-          <a href="">Giới thiệu</a>
-          <a href="">Liên hệ</a>
-        </nav>
-      </div>
-
-      <div class="main_icons">
-        <img id="heart" src="../assets/icons/Favorites.png" alt="haert" />
-        <img src="../assets/icons/Cart1.png" alt="cart" />
-        <img src="../assets/icons/User.png" alt="user" />
-      </div>
+      <ul class="sidebar-menu">
+        <li><img src="../assets/icons/Cart1.png" alt="" />Thống kê</li>
+        <li class="active">
+          <img src="../assets/icons/Cart1.png" alt="" />Danh mục
+        </li>
+        <li><img src="../assets/icons/Cash (2).png" alt="" />Sản phẩm</li>
+      </ul>
     </div>
 
-    <div class="navBar_bottom">
-      <img src="../assets/icons/Phones.png" alt="phone" />
-      <img src="../assets/icons/Computers.png" alt="laptop" />
-      <img src="../assets/icons/Vector.png" alt="watch" />
-      <img src="../assets/icons/Cameras.png" alt="camera" />
-      <img src="../assets/icons/Headphones.png" alt="heardPhone" />
-      <img src="../assets/icons/Gaming.png" alt="gaming" />
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <header>
+        <div class="user-info">
+          <img src="../assets/img/avt-user.png" alt="" class="user-avatar" />
+        </div>
+      </header>
+
+      <!-- Quản lý danh mục sản phẩm -->
+      <section class="category-management">
+        <div class="section-header">
+          <h2>Danh mục</h2>
+          <button class="add-btn">Thêm mới danh mục</button>
+        </div>
+
+        <div class="filter-bar">
+          <select>
+            <option>Trạng thái</option>
+            <option value="">Đang hoạt động</option>
+            <option value="">Ngừng hoạt động</option>
+          </select>
+          <input type="text" placeholder="Tìm kiếm danh mục theo tên" />
+        </div>
+        <!-- Table -->
+        <table class="category-table">
+          <thead>
+            <tr>
+              <th>Mã danh mục</th>
+              <th>Tên danh mục</th>
+              <th>Trạng thái</th>
+              <th>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DM001</td>
+              <td>Quần áo</td>
+              <td><span class="status active">Đang hoạt động</span></td>
+              <td>
+                <button class="edit-btn">
+                  <img src="../assets/icons/trash.png" alt="Delete" />
+                </button>
+                <button class="delete-btn">
+                  <img src="../assets/icons/pen.png" alt="Edit" />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>DM002</td>
+              <td>Kính mắt</td>
+              <td><span class="status inactive">Ngừng hoạt động</span></td>
+              <td>
+                <button class="edit-btn">
+                  <img src="../assets/icons/trash.png" alt="Delete" />
+                </button>
+                <button class="delete-btn">
+                  <img src="../assets/icons/pen.png" alt="Edit" />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>DM003</td>
+              <td>Giày dép</td>
+              <td><span class="status active">Đang hoạt động</span></td>
+              <td>
+                <button class="edit-btn">
+                  <img src="../assets/icons/trash.png" alt="Delete" />
+                </button>
+                <button class="delete-btn">
+                  <img src="../assets/icons/pen.png" alt="Edit" />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>DM004</td>
+              <td>Thời trang nam</td>
+              <td><span class="status inactive">Ngừng hoạt động</span></td>
+              <td>
+                <button class="edit-btn">
+                  <img src="../assets/icons/trash.png" alt="Delete" />
+                </button>
+                <button class="delete-btn">
+                  <img src="../assets/icons/pen.png" alt="Edit" />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>DM005</td>
+              <td>Thời trang nữ</td>
+              <td><span class="status inactive">Ngừng hoạt động</span></td>
+              <td>
+                <button class="edit-btn">
+                  <img src="../assets/icons/trash.png" alt="Delete" />
+                </button>
+                <button class="delete-btn">
+                  <img src="../assets/icons/pen.png" alt="Edit" />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>DM006</td>
+              <td>Hoa quả</td>
+              <td><span class="status active">Đang hoạt động</span></td>
+              <td>
+                <button class="edit-btn">
+                  <img src="../assets/icons/trash.png" alt="Delete" />
+                </button>
+                <button class="delete-btn">
+                  <img src="../assets/icons/pen.png" alt="Edit" />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>DM007</td>
+              <td>Rau</td>
+              <td><span class="status active">Đang hoạt động</span></td>
+              <td>
+                <button class="edit-btn">
+                  <img src="../assets/icons/trash.png" alt="Delete" />
+                </button>
+                <button class="delete-btn">
+                  <img src="../assets/icons/pen.png" alt="Edit" />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>DM008</td>
+              <td>Điện thoại</td>
+              <td><span class="status inactive">Ngừng hoạt động</span></td>
+              <td>
+                <button class="edit-btn">
+                  <img src="../assets/icons/trash.png" alt="Delete" />
+                </button>
+                <button class="delete-btn">
+                  <img src="../assets/icons/pen.png" alt="Edit" />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Phân tragg -->
+        <!-- <div class="pagination">
+          <button>←</button>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>→</button>
+        </div> -->
+      </section>
     </div>
   </body>
 </html>

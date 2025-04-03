@@ -15,30 +15,56 @@ h3 {
     font-weight: 600;
 }
 
+a{
+    text-decoration: none;
+    color: #0056b3;
+}
+
+.title-box{
+    margin-top: 96px;
+}
 .text_botton_title {
     color: #667085;
     font-size: 18px; 
-    margin-top: 8px;
+    margin-top: 20px;
 }
 
 
 .container_box {
-    width: 100%;
-    max-width: 400px; 
+    justify-content: center;
+    width: 480px;
+    height: 390px;
+    gap: 24px;
     margin: 0 auto;
-    padding: 24px;
-    background: #fff;
     border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container_box .full-name{
+    display: flex;
+    gap: 24px;
 }
 
 
-input {
+.container_box .full-name input{
+   width: 100%;
+}
+
+.container_box .email{
     width: 100%;
+}
+
+.container_box .email input,
+.container_box .password input{
+    width: 100%;
+}
+
+input {
+    /* width: 100%;*/
     padding: 12px;
     border: 1px solid #D0D5DD;
     border-radius: 8px;
     font-size: 16px;
+    margin-top: 6px;
 }
 
 
@@ -48,29 +74,64 @@ input:focus {
 }
 
 
-.full-name {
-    display: flex;
-    gap: 10px; 
+.full-name div {
+    width: 480px;
+    height: 74px;
+    gap: 32px;
+
 }
 
-.full-name div {
-    width: 50%;
+.email{
+    width: 480px;
+    height: 74px;
+    gap: 6px;
+    margin: 24px 0;
+
+}
+
+.password{
+    width: 480px;
+    height: 74px;
+    gap: 6px;
+
 }
 
 
 .box-help {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 14px;
+    gap: 12px;
     margin-top: 12px;
+    font-weight: 500px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    margin: 24px 0;
+
 }
 
+.box-help label{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.box-help label #input-chb{
+    width: 20px;
+    height: 20px;
+ 
+  
+}
+
+.box-help a {
+    font-weight: 600px;
+}
 
 .btn-submit button {
     width: 100%;
     padding: 12px;
-    background-color: #007bff;
+    border: 1px solid #1A0DEE;
+    background-color: #007AFF;
     color: white;
     border: none;
     border-radius: 8px;
@@ -82,26 +143,31 @@ input:focus {
 
 .btn-submit button:hover {
     background-color: #0056b3;
+} */
+
+
+.btn-footer  a{
+font-weight: 600px;
+
 }
 
 
-.btn-footer {
-     display: flex;
-    text-align: center;
-    margin-top: 16px;
-}
+.btn-footer{
+display: flex;
+font-weight: 500px;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: 0%;
+margin-top: 24px;
+margin-left: 117px;
 
-.btn-footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 16px;
 }
 
 
 /* Responsive cho mobile */
 @media screen and (max-width: 600px) {
     .container_box {
-        max-width: 90%; 
+        width: 100%; 
     }
     .full-name {
         flex-direction: column; 

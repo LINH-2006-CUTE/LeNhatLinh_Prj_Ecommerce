@@ -1,4 +1,3 @@
-// Dữ liệu mẫu
 let categories = [
     { code: "DM001", name: "Quần áo", status: "inactive" },
     { code: "DM002", name: "Kính mắt", status: "inactive" },
@@ -15,13 +14,12 @@ let categories = [
   let currentPage = 1; // Trang hiện tại, mặc định là trang 1
   let totalItems = categories.length; // Tổng số danh mục
   let totalPages = Math.ceil(totalItems / itemsPerPage); // Tổng số trang
+  const tableBody = document.getElementById("categoryTable");
 
   // Hiển thị danh sách danh mục theo trang
   function displayCategories() {
-    const tableBody = document.getElementById("categoryTable");
     tableBody.innerHTML = "";
 
-    
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
 
@@ -50,6 +48,8 @@ let categories = [
     updatePagination();
   }
 
+  displayCategories();
+
   function updatePagination() {
     const pagination = document.getElementById("pagination");
     pagination.innerHTML = "";
@@ -65,7 +65,7 @@ let categories = [
     for (let i = 1; i <= totalPages; i++) {
       pagination.innerHTML += `
         <li class="page-item ${currentPage === i ? 'active' : ''}">
-<a class="page-link" href="" onclick="changePage(${i}); 
+          <a class="page-link" href="" onclick="changePage(${i}); 
         </li>
       `;
     }
@@ -125,10 +125,73 @@ let categories = [
     const name = document.getElementById("editCategoryName").value;
     const status = document.getElementById("editCategoryStatus").value;
 
-    const index = categories.findIndex(cat => cat.code === code);
+    const index = categories.findIndex(categories => categories.code === code);
     categories[index] = { code, name, status };
     displayCategories();
     bootstrap.Modal.getInstance(document.getElementById("editCategoryModal")).hide();
   }
-//bước cuối
+
   displayCategories();
+
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   let categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+  //   function renderTable() {
+  //     const tbody = document.getElementById("categoryTable");
+  //     tbody.innerHTML = "";
+  //     categories.forEach((category, index) => {
+  //       tbody.innerHTML += `
+  //                   <tr>
+  //                       <th scope="row">${category.id}</th>
+  //                       <td>${category.name}</td>
+  //                       <td>${category.status}</td>
+  //                       <td>
+  //                           <button class="btn btn-warning btn-sm" onclick="editCategory(${index})">Sửa</button>
+  //                           <button class="btn btn-danger btn-sm" onclick="deleteCategory(${index})">Xóa</button>
+  //                       </td>
+  //                   </tr>
+  //               `;
+  //     });
+  //   }
+
+  //   window.addCategory = function () {
+  //     const name = document.getElementById("categoryName").value;
+  //     const status = document.getElementById("categoryStatus").checked
+  //       ? "Đang hoạt động"
+  //       : "Ngừng hoạt động";
+  //     const id = categories.length + 1;
+
+  //     if (name.trim() === "") {
+  //       alert("Tên danh mục không được để trống");
+  //       return;
+  //     }
+
+  //     categories.push({ id, name, status });
+  //     localStorage.setItem("categories", JSON.stringify(categories));
+  //     renderTable();
+  //     document.getElementById("categoryName").value = "";
+  //     document.getElementById("categoryStatus").checked = false; // Reset checkbox
+  //   };
+
+  //   window.editCategory = function (index) {
+  //     const newName = prompt("Nhập tên mới:", categories[index].name);
+  //     if (newName) {
+  //       categories[index].name = newName;
+  //       localStorage.setItem("categories", JSON.stringify(categories));
+  //       renderTable();
+  //     }
+  //   };
+
+  //   window.deleteCategory = function (index) {
+  //     if (confirm("Bạn có chắc muốn xóa danh mục này không?")) {
+  //       categories.splice(index, 1);
+  //       localStorage.setItem("categories", JSON.stringify(categories));
+  //       renderTable();
+  //     }
+  //   };
+
+  //   document
+  //     .getElementById("addButton")
+  //     .addEventListener("click", addCategory);
+  //   renderTable();
+  // });
