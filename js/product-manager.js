@@ -110,7 +110,7 @@ let categories = [
     displayCategories();
   }
 
-  // xchỉnh sửa
+  // chỉnh sửa
   function openEditModal(code) {
     const category = categories.find(cat => cat.code === code);
     document.getElementById("editCategoryCode").value = category.code;
@@ -195,3 +195,40 @@ let categories = [
   //     .addEventListener("click", addCategory);
   //   renderTable();
   // });
+
+  // Thêm sản  phẩm
+  document.getElementById('addProductForm').addEventListener('submit', function (e) {
+    e.preventDefault(); 
+
+    // Lấy giá trị từ các input
+    const code = document.getElementById('productCode').value;
+    const name = document.getElementById('productName').value;
+    const price = document.getElementById('productPrice').value;
+    const quantity = document.getElementById('productQuantity').value;
+    const discount = document.getElementById('productDiscount').value;
+    const status = document.getElementById('productStatus').value;
+
+    // Tạo hàng mới trong bảng
+    const tbody = document.querySelector('.product-table tbody');
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <td>${code}</td>
+      <td>${name}</td>
+      <td>${Number(price).toLocaleString()} đ</td>
+      <td>${quantity}</td>
+      <td>${discount}%</td>
+      <td><span class="status ${status}">${status === 'active' ?'Đang hoạt động':'Ngừng hoạt động'}</span></td>
+      <td>
+        <button class="edit-btn"><img src="../assets/icons/trash.png" alt="Delete" /></button>
+        <button class="delete-btn"><img src="../assets/icons/pen.png" alt="Edit" /></button>
+      </td>
+    `;
+
+    // Thêm hàng vào bảng
+    tbody.appendChild(newRow);
+
+    // Reset form và đóng modal
+    this.reset();
+    const modal = bootstrap.Modal.getInstance(document.getElementById('edit-product'));
+    modal.hide();
+  });

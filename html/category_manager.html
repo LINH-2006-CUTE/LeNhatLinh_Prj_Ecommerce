@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quản lý danh mục sản phẩm</title>
     <link rel="stylesheet" href="../css/category_manader.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <!-- Sidebar -->
@@ -14,11 +21,17 @@
         <h2>Ecommerce</h2>
       </div>
       <ul class="sidebar-menu">
-        <li><img src="../assets/icons/Cart1.png" alt="" />Thống kê</li>
-        <li class="active">
-          <img src="../assets/icons/Cart1.png" alt="" />Danh mục
+        <li>
+          <img src="../assets/icons/Cart1.png" alt="" /><a href="">Thống kê</a>
         </li>
-        <li><img src="../assets/icons/Cash (2).png" alt="" />Sản phẩm</li>
+        <li class="active">
+          <img src="../assets/icons/Cart1.png" alt="" /><a href="">Danh mục</a>
+        </li>
+        <li>
+          <img src="../assets/icons/Cash (2).png" alt="" /><a href=""
+            >Sản phẩm</a
+          >
+        </li>
       </ul>
     </div>
 
@@ -35,144 +48,239 @@
       <section class="category-management">
         <div class="section-header">
           <h2>Danh mục</h2>
-          <button class="add-btn">Thêm mới danh mục</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#myModal"
+            class="add-btn"
+          >
+            Thêm mới danh mục
+          </button>
+
+          <!-- Modal Thêm mới -->
+          <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Thêm mới danh mục</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form id="addCategoryForm">
+                    <div class="mb-3">
+                      <label for="categoryCode" class="form-label"
+                        >Mã danh mục</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="categoryCode"
+                        aria-describedby="codeHelp"
+                      />
+                      <div id="codeHelp" class="form-text text-danger"></div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="categoryName" class="form-label"
+                        >Tên danh mục</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="categoryName"
+                      />
+                      <div id="nameHelp" class="form-text text-danger"></div>
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="categoryStatus"
+                        checked
+                      />
+                      <label class="form-check-label" for="categoryStatus"
+                        >Đang hoạt động</label
+                      >
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Hủy
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="addCategoryBtn"
+                  >
+                    Thêm
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
+        <!-- Thanh lọc, tìm kiếm và sắp xếp -->
         <div class="filter-bar">
-          <select>
-            <option>Trạng thái</option>
-            <option value="">Đang hoạt động</option>
-            <option value="">Ngừng hoạt động</option>
+          <select id="statusFilter">
+            <option value="">Tất cả trạng thái</option>
+            <option value="active">Đang hoạt động</option>
+            <option value="inactive">Ngừng hoạt động</option>
           </select>
-          <input type="text" placeholder="Tìm kiếm danh mục theo tên" />
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Tìm kiếm danh mục theo tên"
+          />
+          <select id="sortOption">
+            <option value="name-asc">Sắp xếp: Tên</option>
+            <option value="name-desc">Sắp xếp: tho</option>
+            <option value="date-asc">Sắp xếp:</option>
+            <option value="date-desc">Sắp xếp:</option>
+          </select>
         </div>
+
         <!-- Table -->
         <table class="category-table">
           <thead>
             <tr>
               <th>Mã danh mục</th>
               <th>Tên danh mục</th>
+              <th>Thời gian tạo</th>
               <th>Trạng thái</th>
               <th>Chức năng</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>DM001</td>
-              <td>Quần áo</td>
-              <td><span class="status active">Đang hoạt động</span></td>
-              <td>
-                <button class="edit-btn">
-                  <img src="../assets/icons/trash.png" alt="Delete" />
-                </button>
-                <button class="delete-btn">
-                  <img src="../assets/icons/pen.png" alt="Edit" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>DM002</td>
-              <td>Kính mắt</td>
-              <td><span class="status inactive">Ngừng hoạt động</span></td>
-              <td>
-                <button class="edit-btn">
-                  <img src="../assets/icons/trash.png" alt="Delete" />
-                </button>
-                <button class="delete-btn">
-                  <img src="../assets/icons/pen.png" alt="Edit" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>DM003</td>
-              <td>Giày dép</td>
-              <td><span class="status active">Đang hoạt động</span></td>
-              <td>
-                <button class="edit-btn">
-                  <img src="../assets/icons/trash.png" alt="Delete" />
-                </button>
-                <button class="delete-btn">
-                  <img src="../assets/icons/pen.png" alt="Edit" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>DM004</td>
-              <td>Thời trang nam</td>
-              <td><span class="status inactive">Ngừng hoạt động</span></td>
-              <td>
-                <button class="edit-btn">
-                  <img src="../assets/icons/trash.png" alt="Delete" />
-                </button>
-                <button class="delete-btn">
-                  <img src="../assets/icons/pen.png" alt="Edit" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>DM005</td>
-              <td>Thời trang nữ</td>
-              <td><span class="status inactive">Ngừng hoạt động</span></td>
-              <td>
-                <button class="edit-btn">
-                  <img src="../assets/icons/trash.png" alt="Delete" />
-                </button>
-                <button class="delete-btn">
-                  <img src="../assets/icons/pen.png" alt="Edit" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>DM006</td>
-              <td>Hoa quả</td>
-              <td><span class="status active">Đang hoạt động</span></td>
-              <td>
-                <button class="edit-btn">
-                  <img src="../assets/icons/trash.png" alt="Delete" />
-                </button>
-                <button class="delete-btn">
-                  <img src="../assets/icons/pen.png" alt="Edit" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>DM007</td>
-              <td>Rau</td>
-              <td><span class="status active">Đang hoạt động</span></td>
-              <td>
-                <button class="edit-btn">
-                  <img src="../assets/icons/trash.png" alt="Delete" />
-                </button>
-                <button class="delete-btn">
-                  <img src="../assets/icons/pen.png" alt="Edit" />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>DM008</td>
-              <td>Điện thoại</td>
-              <td><span class="status inactive">Ngừng hoạt động</span></td>
-              <td>
-                <button class="edit-btn">
-                  <img src="../assets/icons/trash.png" alt="Delete" />
-                </button>
-                <button class="delete-btn">
-                  <img src="../assets/icons/pen.png" alt="Edit" />
-                </button>
-              </td>
-            </tr>
+          <tbody id="categoryTableBody">
+            <!-- Danh sách danh mục sẽ được thêm bằng JavaScript -->
           </tbody>
         </table>
-        <!-- Phân tragg -->
-        <!-- <div class="pagination">
-          <button>←</button>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>→</button>
-        </div> -->
+
+        <!-- Phân trang -->
+        <div class="pagination" id="pagination">
+          <!-- Phân trang sẽ được thêm bằng JavaScript -->
+        </div>
       </section>
     </div>
+
+    <!-- Modal Cập nhật -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Cập nhật danh mục</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="editCategoryForm">
+              <div class="mb-3">
+                <label for="editCategoryCode" class="form-label"
+                  >Mã danh mục</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editCategoryCode"
+                  readonly
+                />
+              </div>
+              <div class="mb-3">
+                <label for="editCategoryName" class="form-label"
+                  >Tên danh mục</label
+                >
+                <input type="text" class="form-control" id="editCategoryName" />
+                <div id="editNameHelp" class="form-text text-danger"></div>
+              </div>
+              <div class="mb-3 form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="editCategoryStatus"
+                />
+                <label class="form-check-label" for="editCategoryStatus"
+                  >Đang hoạt động</label
+                >
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Hủy
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="updateCategoryBtn"
+            >
+              Cập nhật
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Xóa -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="action-check">
+              <p>Xác Nhận</p>
+              <p>Bạn có chắc chắn muốn xóa danh mục này khỏi hệ thống không?</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Hủy
+            </button>
+            <button type="button" class="btn btn-primary" id="confirmDeleteBtn">
+              Xóa
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/category_manader.js"></script>
   </body>
 </html>

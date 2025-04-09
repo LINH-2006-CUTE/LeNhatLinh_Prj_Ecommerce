@@ -5,26 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Category Manader</title>
     <link rel="stylesheet" href="../css/dashboard.css" />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js"
+      integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- Phan navbar -->
     <div class="header">
       <img class="logo" src="../assets/icons/logo_main.png" alt="" />
       <form class="input">
-        <label for="input"></label>
-        <input type="text" placeholder="Tìm kiếm" />
         <img src="../assets/icons/Search.png" alt="" />
+        <input type="text" placeholder="Tìm kiếm" />
       </form>
       <!-- Links -->
       <nav class="nav-links">
-        <a href="">Trang chủ</a>
-        <a href="">Giới thiệu</a>
-        <a href="">Liên hệ</a>
+        <a href="#">Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Liên hệ</a>
       </nav>
+
+      <!-- Phần đăng xuất -->
       <div class="avt-header">
-        <img src="../assets/icons/Favorites.png" alt="" />
-        <img src="../assets/icons/Cart1.png" alt="" />
-        <img src="../assets/icons/User.png" alt="" />
+        <img src="../assets/icons/Favorites.png" alt="heart" />
+        <img src="../assets/icons/Cart1.png" alt="cart" />
+        <img src="../assets/icons/User.png" alt="user" />
+        <!-- Thêm select, mặc định ẩn -->
+        <!-- <select
+          class="form-select"
+          id="user-select"
+          aria-label="User options"
+          style="
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            z-index: 1000;
+          "
+        >
+          <option selected disabled>Chọn hành động</option>
+          <option value="logout">Đăng xuất</option>
+        </select> -->
+        <!-- // icon đăng xuất -->
+        <ion-icon name="log-out-outline" id="log-out"></ion-icon>
+        <!-- <div
+          id="logout-menu"
+          style="display: none; position: absolute; top: 50px; right: 0"
+        >
+          <button id="logout-btn">Đăng xuất</button>
+        </div> -->
       </div>
     </div>
 
@@ -35,23 +71,23 @@
           <img src="../assets/icons/Phones.png" alt="Điện thoại" />
           <span>Điện thoại</span>
         </div>
-        <div class="category-item">
+        <div class="category-item-header">
           <img src="../assets/icons/Computers.png" alt="Laptop" />
           <span>Laptop</span>
         </div>
-        <div class="category-item">
+        <div class="category-item-header">
           <img src="../assets/icons/Gaming.png" alt="Đồng hồ" />
           <span>Đồng hồ thông minh</span>
         </div>
-        <div class="category-item">
+        <div class="category-item-header">
           <img src="../assets/icons/Cameras.png" alt="Cameras" />
           <span>Cameras</span>
         </div>
-        <div class="category-item">
+        <div class="category-item-header">
           <img src="../assets/icons/Headphones.png" alt="Tai nghe" />
           <span>Tai nghe</span>
         </div>
-        <div class="category-item">
+        <div class="category-item-header">
           <img src="../assets/icons/Gaming.png" alt="Gaming" />
           <span>Gaming</span>
         </div>
@@ -66,7 +102,7 @@
         <p-3>Được tạo ra để thay đổi mọi thứ tốt hơn.Cho tất cả mọi người</p-3>
         <br />
 
-        <button class="btn-buyIP" type="submit">Mua ngay</button>
+        <button class="btn-buyIP" id="btn-buyIP" type="submit">Mua ngay</button>
       </div>
 
       <div class="product-highlight-img">
@@ -80,23 +116,26 @@
         <h2>Danh mục sản phẩm</h2>
         <div class="category-nav">
           <button>&lt;</button>
-          <!--kí tự đặc biệt-->
           <button>&gt;</button>
         </div>
       </div>
       <div class="category-list">
-        <button class="category-button">Điện thoại</button>
-        <button class="category-button">Đồng hồ</button>
-        <button class="category-button">Cameras</button>
-        <button class="category-button">Tai nghe</button>
-        <button class="category-button">Máy tính</button>
-        <button class="category-button">Gaming</button>
+        <button>Điện thoại</button>
+        <button>Đồng hồ</button>
+        <button>Cameras</button>
+        <button>Tai nghe</button>
+        <button>Máy tính</button>
+        <button>Gaming</button>
       </div>
     </div>
-    <!-- featured-product (Sản phẩm nổi bật) -->
 
+    <!-- featured-product (Sản phẩm nổi bật) -->
     <div class="featured-product">
       <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
+
         <img
           src="../assets/img/apple iphone14prm.png"
           alt="iPhone 14 Pro Max"
@@ -106,6 +145,9 @@
         <button class="buy-now">Mua ngay</button>
       </div>
       <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
         <img
           src="../assets/img/camera 6k.png"
           alt="Blackmagic Pocket Cinema Camera"
@@ -115,24 +157,36 @@
         <button class="buy-now">Mua ngay</button>
       </div>
       <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
         <img src="../assets/img/apple watch.png" alt="Apple Watch Series 6" />
         <h3>Apple Watch Series 6 GPS + Cellular 40mm Starlight Aluminum</h3>
         <p class="price">$399</p>
         <button class="buy-now">Mua ngay</button>
       </div>
       <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
         <img src="../assets/img/airPods.png" alt="AirPods Max Silver" />
         <h3>AirPods Max Silver</h3>
         <p class="price">$549</p>
         <button class="buy-now">Mua ngay</button>
       </div>
       <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
         <img src="../assets/img/samsungWatch.png" alt="Samsung Galaxy Watch6" />
         <h3>Samsung Galaxy Watch6 Classic 47mm Black</h3>
         <p class="price">$368</p>
         <button class="buy-now">Mua ngay</button>
       </div>
       <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
         <img
           src="../assets/img/galaxy z fold 5.png"
           alt="Galaxy Z Fold5 Unlocked"
@@ -142,12 +196,18 @@
         <button class="buy-now">Mua ngay</button>
       </div>
       <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
         <img src="../assets/img/galaxy buds FE.png" alt="Galaxy Buds FE" />
         <h3>Galaxy Buds FE Graphite</h3>
         <p class="price">$99.99</p>
         <button class="buy-now">Mua ngay</button>
       </div>
       <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
         <img src="../assets/img/apple ipad.png" alt="Apple iPad" />
         <h3>Apple iPad 10.2" 64GB Wi-Fi Silver 2021 2021</h3>
         <p class="price">$398</p>
@@ -156,12 +216,16 @@
     </div>
 
     <!-- featured-sale-item ( sản phẩm giảm giá nổi bật) -->
-    <div class="featured-sale-item">
-      <div class="featured-sale-item-header">
-        <h2>Sản phẩm giảm giá</h2>
-      </div>
+    <div class="featured-sale-item-header">
+      <h2>Sản phẩm giảm giá</h2>
+    </div>
 
-      <div class="featured-sale-product-item">
+    <div class="featured-sale-item">
+      <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
+
         <img
           src="../assets/img/apple iphone14prm.png"
           alt="iPhone 14 Pro Max"
@@ -171,21 +235,30 @@
         <button class="buy-now">Mua ngay</button>
       </div>
 
-      <div class="featured-sale-product-item">
+      <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
         <img src="../assets/img/airPods.png" alt="iPhone 14 Pro Max" />
         <h3>AAirPods Max Silver</h3>
         <p class="price">$900</p>
         <button class="buy-now">Mua ngay</button>
       </div>
 
-      <div class="featured-sale-product-item">
+      <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
         <img src="../assets/img/apple watch.png" alt="iPhone 14 Pro Max" />
         <h3>Apple Watch Series 9 GPS 41mm Starlight Aluminium</h3>
         <p class="price">$900</p>
         <button class="buy-now">Mua ngay</button>
       </div>
 
-      <div class="featured-sale-product-item">
+      <div class="featured-product-item">
+        <div class="img-heart">
+          <img src="../assets/icons/Favorite_duotone.png" alt="heart" />
+        </div>
         <img
           src="../assets/img/apple ip14 pro 1tb.png"
           alt="iPhone 14 Pro Max"
@@ -195,5 +268,114 @@
         <button class="buy-now">Mua ngay</button>
       </div>
     </div>
+
+    <!-- saleBanner -->
+    <div class="saleBanner" style="position: relative">
+      <div class="saleBanner-img-left">
+        <img
+          class="saleBanner-img-left-1"
+          src="../assets/img/pic-left-footer3.png"
+          alt=""
+        />
+        <img
+          class="saleBanner-img-left-2"
+          src="../assets/img/pic-left-footer2.png"
+          alt=""
+        />
+        <img
+          class="saleBanner-img-left-3"
+          src="../assets/img/pic-left-footer.png"
+          alt=""
+        />
+      </div>
+
+      <div class="saleBanner-content">
+        <div>
+          <span> <h2>Ưu đãi mùa hè</h2></span>
+          <p>Nhanh tay săn đón các sản phẩm chất lượng</p>
+        </div>
+        <button class="btn-saleBanner" id="btn-saleBanner" type="submit">
+          Mua ngay
+        </button>
+      </div>
+
+      <div class="saleBanner-img-right">
+        <img
+          class="saleBanner-img-right-1"
+          src="../assets/img/pic-right-footer1.png"
+          alt=""
+        />
+
+        <img
+          class="saleBanner-img-right-2"
+          src="../assets/img/pic-right-footer2.png"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="column-1">
+        <div class="logo-p">
+          <img
+            class="logo-footer"
+            src="../assets/icons/Logo-footer.png"
+            alt=""
+          />
+          <p>
+            Chúng tôi cung cấp các sản phẩm công nghệ, giúp khách hàng thỏa sức
+            trải nghiệm các dịch vụ, tiện ích nhanh chóng và hiệu quả.
+          </p>
+        </div>
+
+        <!-- logo-footer-more -->
+        <div class="logo-footer-more">
+          <img src="../assets/icons/Twitter.png" alt="twitter" />
+          <img src="../assets/icons/Facebook.png" alt="facebook" />
+          <img src="../assets/icons/Tiktok.png" alt="tiktok" />
+          <img src="../assets/icons/Instagram.png" alt="instagram" />
+        </div>
+      </div>
+
+      <div class="fter-right">
+        <div class="fter-column">
+          <h3>Dịch vụ</h3>
+          <nav class="links-footer">
+            <a href="#">Chương trình khuyến mãi</a>
+            <a href="#">Gift cards</a>
+            <a href="#">Tín dụng và thanh toán</a>
+            <a href="#">Dịch vụ hơp đồng</a>
+            <a href="#">Ví tiền điện tử</a>
+            <a href="#">Thanh toán</a>
+          </nav>
+        </div>
+
+        <div class="fter-column">
+          <h3>Hỗ trợ người mua</h3>
+          <nav class="links-footer">
+            <a href="#">Tìm kiếm đơn đặt hàng</a>
+            <a href="#">Điều khoản giao hàng</a>
+            <a href="#">Trao đổi và trả hàng</a>
+            <a href="#">Chính sách bảo hành</a>
+            <a href="#">Câu hỏi thường gặp</a>
+            <a href="#">Chính sách và điều khoản</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="../js/dashboard.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
   </body>
 </html>
