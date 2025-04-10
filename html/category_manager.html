@@ -96,17 +96,45 @@
                       />
                       <div id="nameHelp" class="form-text text-danger"></div>
                     </div>
+                    <!-- Trạng thái hoạt động -->
                     <div class="mb-3 form-check">
                       <input
                         type="checkbox"
                         class="form-check-input"
-                        id="categoryStatus"
+                        id="categoryActive"
                         checked
                       />
-                      <label class="form-check-label" for="categoryStatus"
+                      <label class="form-check-label" for="categoryActive"
                         >Đang hoạt động</label
                       >
                     </div>
+                    <div class="mb-3 form-check">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="categoryInactive"
+                      />
+                      <label class="form-check-label" for="categoryInactive"
+                        >Ngừng hoạt động</label
+                      >
+                    </div>
+
+                    <!-- <div>
+                      <div
+                        style="display: flex; gap: 12px; align-items: center"
+                      >
+                        <label
+                          ><input type="checkbox" value="active" /> Đang hoạt
+                          động</label
+                        >
+                        <label
+                          ><input type="checkbox" value="inactive" /> Ngừng hoạt
+                          động</label
+                        >
+                      </div>
+                    </div> -->
+
+                    <!--  -->
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -134,8 +162,8 @@
         <div class="filter-bar">
           <select id="statusFilter">
             <option value="">Tất cả trạng thái</option>
-            <option value="active">Đang hoạt động</option>
-            <option value="inactive">Ngừng hoạt động</option>
+            <option class="active" value="active">Đang hoạt động</option>
+            <option class="inactive" value="inactive">Ngừng hoạt động</option>
           </select>
           <input
             type="text"
@@ -143,10 +171,9 @@
             placeholder="Tìm kiếm danh mục theo tên"
           />
           <select id="sortOption">
-            <option value="name-asc">Sắp xếp: Tên</option>
-            <option value="name-desc">Sắp xếp: tho</option>
-            <option value="date-asc">Sắp xếp:</option>
-            <option value="date-desc">Sắp xếp:</option>
+            <option value="name-asc">Sắp xếp: Tên (A-Z)</option>
+            <option value="date-asc">Sắp xếp:Thời gian</option>
+            <option value="price-asc">Sắp xếp:Giá</option>
           </select>
         </div>
 
@@ -161,15 +188,11 @@
               <th>Chức năng</th>
             </tr>
           </thead>
-          <tbody id="categoryTableBody">
-            <!-- Danh sách danh mục sẽ được thêm bằng JavaScript -->
-          </tbody>
+          <tbody id="categoryTableBody"></tbody>
         </table>
 
         <!-- Phân trang -->
-        <div class="pagination" id="pagination">
-          <!-- Phân trang sẽ được thêm bằng JavaScript -->
-        </div>
+        <div class="pagination" id="pagination"></div>
       </section>
     </div>
 
@@ -207,14 +230,29 @@
                 <div id="editNameHelp" class="form-text text-danger"></div>
               </div>
               <div class="mb-3 form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="editCategoryStatus"
-                />
-                <label class="form-check-label" for="editCategoryStatus"
-                  >Đang hoạt động</label
-                >
+                <div class="mb-3 form-check">
+                  <div class="mb-3 form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="categoryActive"
+                      checked
+                    />
+                    <label class="form-check-label" for="categoryActive"
+                      >Đang hoạt động</label
+                    >
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="categoryInactive"
+                    />
+                    <label class="form-check-label" for="categoryInactive"
+                      >Ngừng hoạt động</label
+                    >
+                  </div>
+                </div>
               </div>
             </form>
           </div>
@@ -264,7 +302,11 @@
             >
               Hủy
             </button>
-            <button type="button" class="btn btn-primary" id="confirmDeleteBtn">
+            <button
+              type="button"
+              class="btn btn-primary delete-btn"
+              id="confirmDeleteBtn"
+            >
               Xóa
             </button>
           </div>
@@ -281,6 +323,6 @@
 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../js/category_manader.js"></script>
+    <script src="../js/category_manager.js"></script>
   </body>
 </html>

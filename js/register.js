@@ -293,7 +293,7 @@ form.addEventListener("submit", function (event) {
  
   if (isValid) {
     alert("Đăng ký thành công!");
-    window.location.href = "login.html";
+    window.location.href = "../html/login.html";
   }
 });
   

@@ -10,6 +10,7 @@ body {
     width: 100%;
 }
 
+
 /* header */
 .header {
     display: flex;
@@ -251,13 +252,15 @@ form img {
     height: 32px;
     justify-content: space-between;
     margin-top: 80px;
+    /* padding: 32px 20px 160px 160px; */
+
 }
 
 .category-header h2{
     color: #000000;
     font-size: 24px;
     line-height: 32px;
-    letter-spacing: 1%;
+    /* letter-spacing: 1%; */
     font-weight:50;
     margin-left: 160px;
 }
@@ -276,10 +279,11 @@ form img {
 
 .category-list {
     display: flex;
+    justify-content: center;
     gap: 32px;
-    margin: 32px 20px 160px 160px;
+    /* margin: 32px 20px 160px 160px; */
     width: 100%;
-    height: 128px;
+    /* height: 128px; */
 }
 
 .category-list button {

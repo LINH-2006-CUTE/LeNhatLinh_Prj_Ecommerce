@@ -124,12 +124,12 @@ body {
     font-weight: bold;
   }
   
-  .status.active {
+  .active {
     color: green;
     font-weight: bold;
   }
   
-  .status.inactive {
+  .inactive {
     color: red;
     font-weight: bold;
   }
