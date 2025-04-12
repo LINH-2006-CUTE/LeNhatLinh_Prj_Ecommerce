@@ -1,96 +1,123 @@
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Đăng kí tài khoản</title>
-      <link rel="stylesheet" href="../css/register.css" />
-    </head>
-    <body>
-      <div class="title-box">
-        <div class="title"><h3>Đăng kí tài khoản</h3></div>
-        <div class="text_botton_title">
-          <p>Đăng ký tài khoản để sử dụng dịch vụ</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng kí tài khoản</title>
+    <link rel="stylesheet" href="../css/register.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="conatainer-main">
+        <div class="title-box">
+          <div class="title"><h3>Đăng kí tài khoản</h3></div>
+          <div class="text_botton_title">
+            <p>Đăng ký tài khoản để sử dụng dịch vụ</p>
+          </div>
         </div>
+
+        <form class="container_box">
+          <div class="full-name">
+            <div class="first-name">
+              <label>
+                Họ và tên đệm<br />
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  placeholder="Họ và tên đệm"
+                />
+                <div id="error-firstName" class="error-message">
+                  Vui lòng nhập họ và tên đệm!
+                </div>
+              </label>
+            </div>
+
+            <div class="user-name">
+              <label>
+                Tên<br />
+                <input type="text" name="name" id="name" placeholder="Tên" />
+                <div id="error-name" class="error-message">
+                  Vui lòng nhập tên!
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="email">
+            <label>
+              Email <br />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="you@company.com"
+              />
+              <div id="error-email" class="error-message">
+                Vui lòng nhập email hợp lệ!
+              </div>
+            </label>
+          </div>
+
+          <div class="password">
+            <label for="password">
+              Mật khẩu <br />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Mật khẩu"
+              />
+            </label>
+            <div id="error-password" class="error-message">
+              Vui lòng nhập mật khẩu!
+            </div>
+          </div>
+
+          <!-- Xác nhận mật khẩu -->
+          <div class="confirm-password">
+            <label for="confirm-password">
+              Xác nhận mật khẩu <br />
+              <input
+                type="password"
+                name="confirm-password"
+                id="confirm-password"
+                placeholder="Xác nhận mật khẩu"
+              />
+            </label>
+            <div id="error-confirm-password" class="error-message">
+              Vui lòng nhập mật khẩu!
+            </div>
+          </div>
+
+          <div class="box-help">
+            <label>
+              <input type="checkbox" name="input-chb" id="input-chb" />
+              <span>
+                Bạn đồng ý với <a href="">chính sách và điều khoản</a>
+              </span>
+            </label>
+            <div id="error-checkbox" class="error-message">
+              Vui lòng đồng ý với chính sách và điều khoản!
+            </div>
+          </div>
+
+          <div class="btn-submit">
+            <button>Đăng kí</button>
+          </div>
+
+          <div class="btn-footer">
+            <p>Bạn đã có tài khoản?</p>
+            <span><a href="../html/login.html">Đăng nhập</a></span>
+          </div>
+        </form>
       </div>
-
-      <form class="container_box">
-        <div class="full-name">
-          <label>
-            Họ và tên đệm
-            <br />
-            <input type="text" name="firstName" id="firstName" />
-            <div id="error-firstName" class="error-message">
-              Vui lòng nhập họ và tên đệm!
-            </div>
-          </label>
-
-          <label>
-            Tên <br />
-            <input type="text" name="name" id="name" />
-            <div id="error-name" class="error-message">Vui lòng nhập tên!</div>
-          </label>
-        </div>
-
-        <div class="email">
-          <label>
-            Email <br />
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="you@company.com"
-            />
-            <div id="error-email" class="error-message">
-              Vui lòng nhập email hợp lệ!
-            </div>
-          </label>
-        </div>
-
-        <div class="password">
-          <label for="password">
-            Mật khẩu <br />
-            <input type="password" name="password" id="password" />
-          </label>
-          <div id="error-password" class="error-message">
-            Vui lòng nhập mật khẩu!
-          </div>
-        </div>
-
-        <!-- Xác nhận mật khẩu -->
-        <div class="confirm-password">
-          <label for="confirm-password">
-            Xác nhận mật khẩu <br />
-            <input type="confirm-password" name="confirm-password" id="confirm-password" />
-          </label>
-          <div id="error-confirm-password" class="error-message">
-            Vui lòng nhập mật khẩu!
-          </div>
-        </div>
-
-        <div class="box-help">
-          <label> </label>
-          <input type="checkbox" name="input-chb" id="input-chb" />
-          <span>
-            Bạn đồng ý với
-            <a href="">chính sách và điều khoản</a>
-        
-
-          <div id="error-checkbox" class="error-message">
-            Vui lòng đồng ý với chính sách và điều khoản!
-          </div>
-        </div>
-
-        <div class="btn-submit">
-          <button>Đăng kí</button>
-        </div>
-
-        <div class="btn-footer">
-          <p>Bạn đã có tài khoản?</p>
-          <span><a href="../html/login.html">Đăng nhập</a></span>
-        </div>
-      </form>
-
-      <script src="../js/register.js"></script>
-    </body>
-  </html>
+    </div>
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.4/dist/sweetalert2.all.min.js"
+      integrity="sha256-3/M/xF1tM+Vlrb2yS5M1AZhQt+XX63+skpQKI3dcDNI="
+      crossorigin="anonymous"
+    ></script> -->
+    <script src="../js/register.js"></script>
+  </body>
+</html>

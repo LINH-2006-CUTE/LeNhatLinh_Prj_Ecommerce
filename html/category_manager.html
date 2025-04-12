@@ -15,6 +15,7 @@
   </head>
   <body>
     <!-- Sidebar -->
+    <!-- Sidebar -->
     <div class="sidebar">
       <div class="sidebar-header">
         <img src="../assets/icons/fire.png" alt="Logo" class="logo" />
@@ -22,13 +23,20 @@
       </div>
       <ul class="sidebar-menu">
         <li>
-          <img src="../assets/icons/Cart1.png" alt="" /><a href="">Thống kê</a>
-        </li>
-        <li class="active">
-          <img src="../assets/icons/Cart1.png" alt="" /><a href="">Danh mục</a>
+          <img src="../assets/icons/Cart1.png" alt="" /><a
+            href="../html/dashboard.html"
+            >Thống kê</a
+          >
         </li>
         <li>
-          <img src="../assets/icons/Cash (2).png" alt="" /><a href=""
+          <img src="../assets/icons/Cart1.png" alt="" /><a
+            href="../html/category_manager.html"
+            >Danh mục</a
+          >
+        </li>
+        <li>
+          <img src="../assets/icons/Cash (2).png" alt="" /><a
+            href="../html/products-manager.html"
             >Sản phẩm</a
           >
         </li>
@@ -99,22 +107,28 @@
                     <!-- Trạng thái hoạt động -->
                     <div class="mb-3 form-check">
                       <input
-                        type="checkbox"
+                        type="radio"
                         class="form-check-input"
                         id="categoryActive"
+                        name="status"
                         checked
                       />
-                      <label class="form-check-label" for="categoryActive"
+                      <label
+                        class="form-check-label-active"
+                        for="categoryActive"
                         >Đang hoạt động</label
                       >
                     </div>
                     <div class="mb-3 form-check">
                       <input
-                        type="checkbox"
+                        type="radio"
                         class="form-check-input"
                         id="categoryInactive"
+                        name="status"
                       />
-                      <label class="form-check-label" for="categoryInactive"
+                      <label
+                        class="form-check-label-inactive"
+                        for="categoryInactive"
                         >Ngừng hoạt động</label
                       >
                     </div>
@@ -215,12 +229,7 @@
                 <label for="editCategoryCode" class="form-label"
                   >Mã danh mục</label
                 >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="editCategoryCode"
-                  readonly
-                />
+                <input type="text" class="form-control" id="editCategoryCode" />
               </div>
               <div class="mb-3">
                 <label for="editCategoryName" class="form-label"
@@ -230,21 +239,24 @@
                 <div id="editNameHelp" class="form-text text-danger"></div>
               </div>
               <div class="mb-3 form-check">
-                <div class="mb-3 form-check">
+                <div class="mb-3 form-check-activeactive">
                   <div class="mb-3 form-check">
                     <input
-                      type="checkbox"
                       class="form-check-input"
                       id="categoryActive"
+                      name="status-label"
+                      type="radio"
                       checked
                     />
                     <label class="form-check-label" for="categoryActive"
                       >Đang hoạt động</label
                     >
                   </div>
-                  <div class="mb-3 form-check">
+                  <div class="mb-3 form-check-inactive">
                     <input
-                      type="checkbox"
+                      t
+                      name="status-label"
+                      type="radio"
                       class="form-check-input"
                       id="categoryInactive"
                     />

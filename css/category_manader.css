@@ -1,8 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin:0 ;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
-    display: flex;
+    font-family: "Roboto", sans-serif;
+}
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-  }
+    padding: 0;
+    box-sizing: border-box;
+  
+}
+
   
   .sidebar {
     width: 250px;
@@ -127,11 +141,21 @@ body {
   .active {
     color: green;
     font-weight: bold;
+    background-color: #e7f4ea;
+    border-radius: 10px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 500;
   }
   
   .inactive {
     color: red;
     font-weight: bold;
+    background-color: #f5d7da;
+    border-radius: 10px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 500; 
   }
   
   .category-table button {
@@ -142,7 +166,7 @@ body {
   }
   
   .category-table button img {
-    width: 20px;
+    width: 40px;
   }
   
   .pagination {
@@ -169,4 +193,9 @@ body {
   .pagination button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+
+  .btn btn-primary delete-btn {
+    color: #0000;
   }

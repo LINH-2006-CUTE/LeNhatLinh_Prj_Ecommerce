@@ -25,61 +25,80 @@ body {
 
 /* Sidebar */
 .sidebar {
-    width: 240px;
+    width: 250px;
+    background-color: #f8f9fa;
     height: 100vh;
-    background-color: #F6F8F9;
-    border-right: 1px solid #ddd;
-    padding: 24px 16px;
-}
-
-.sidebar-header {
+    position: fixed;
+  }
+  
+  .sidebar-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 24px;
-}
-
-.sidebar-header .logo {
-    display: block;
-    width: 24px;
-    height: 24px;
-}
-
-.sidebar-header h2 {
-    color: #252C32;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.sidebar-menu {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .sidebar-header img {
+    width: 30px;
+    margin-right: 10px;
+  }
+  
+  .sidebar-menu {
     list-style: none;
-}
-
-
-.sidebar-menu  li img{
-    width: 24px;
-}
-
-.sidebar-menu li {
-    margin-bottom: 8px;
-}
-
-.sidebar-menu a {
+    padding: 0;
+  }
+  
+  .sidebar-menu li {
     display: flex;
     align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .sidebar-menu li img {
+    width: 20px;
+    margin-right: 10px;
+  }
+  
+  .sidebar-menu li a {
     text-decoration: none;
     color: #333;
-    font-size: 16px;
-    padding: 10px 12px;
-    border-radius: 6px;
-    gap: 8px;
-}
-
-.sidebar-menu .active {
-    background-color: #007bff;
-    color: #fff;
-}
-
+  }
+  
+  
+  
+  
+  
+  .main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 20px;
+  }
+  
+  header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .user-info img {
+    width: 40px;
+    border-radius: 50%;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .section-header h2 {
+    font-size: 24px;
+  }
+  
 /* Main Content */
 .main-content {
     flex: 1;
@@ -90,8 +109,7 @@ body {
 /* Header */
 .header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: end;
     margin-bottom: 24px;
 }
 
@@ -106,18 +124,14 @@ body {
     justify-content: flex-end; 
     padding: 8px 16px;
     background-color: #FFFFFF;
-    border-bottom: 1px solid #ddd; 
 }
 
+ 
 .user-info img {
-    width: 36px;
-    height: 36px;
+    width: 40px;
     border-radius: 50%;
-    display: flex;
-    justify-content: flex-end;
-    
-}
-
+  
+  }
 /* Section Header */
 .section-header {
     display: flex;
@@ -252,45 +266,65 @@ body {
 
 .edit-btn img,
 .delete-btn img {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
 }
 
-
-.dashed-box {
-    width: 321px;
-    height: 109px;
-    padding: 20px;
-    margin: 40px auto;
-    border: 3px dashed #3498db;
-    border-radius: 8px;
-    box-sizing: border-box;
-    display: flex; /* Dùng flexbox để căn giữa */
-    flex-direction: column; /* Xếp dọc các phần tử */
-    align-items: center; /* Căn giữa theo chiều ngang */
-    justify-content: center; /* Căn giữa theo chiều dọc */
-    text-align: center; /* Căn giữa text */
-    cursor: pointer; /* Thêm con trỏ để người dùng biết có thể click */
-}
-
-.dashed-box:hover {
-    border-color: #939292; /* Chỉ thay đổi màu viền khi hover */
-}
-
-.dashed-box img {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 10px; /* Khoảng cách giữa hình và text */
-}
-
-.dashed-box p {
-    width: 100%;
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #666;
-}
 
 .submit {
     justify-content: end;
+}
+
+
+/* Thêm mới sản phẩm*/
+
+.modal-header {
+    width: 195px;
+height: 24px;
+
+}
+.modal-title {
+   
+font-weight: 600;
+font-size: 20px;
+line-height: 24px;
+
+
+}
+.btn-close {
+}
+.modal-body {
+}
+.add-product-box {
+    display: flex;
+    gap: 23px;
+}
+.tag-product {
+}
+.form-label {
+}
+.form-control {
+}
+.name-product {
+}
+.price-product-box {
+    display: flex;
+    gap: 20px;
+}
+.category-product{
+    display: flex;
+    gap: 20px;
+}
+.img-product-box {
+}
+.detail-product-box #detail{
+    width: 100%;
+   
+   
+    gap: 8px;
+    top: 33px;
+    left: 4px;
+    border-radius: 8px;
+   border: 1px solid #D0D5DD;
+    
 }

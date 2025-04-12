@@ -1,67 +1,52 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//     // Lấy danh sách người dùng từ localStorage
-//     let users = JSON.parse(localStorage.getItem("users")) || [];
-  
-//     // Xử lý form Đăng nhập
-//     document.querySelector(".container-box").addEventListener("submit", function (e) {
-//       e.preventDefault();
-  
-//       const email = document.getElementById("email").value.trim();
-//       const password = document.getElementById("password").value.trim();
-  
-//       // Xóa thông báo lỗi cũ
-//       clearErrors();
-  
-//       let isValid = true;
-  
-//       // Validate dữ liệu
-//       if (!email) {
-//         showError("emailError", "Email không được để trống");
-//         isValid = false;
-//       }
-  
-//       if (!password) {
-//         showError("passwordError", "Mật khẩu không được để trống");
-//         isValid = false;
-//       }
-  
-//       // Kiểm tra thông tin đăng nhập
-//       if (isValid) {
-//         const user = users.find((u) => u.email === email && u.password === password);
-//         if (user) {
-//           Swal.fire({
-//             icon: "success",
-//             title: "Đăng nhập thành công!",
-//             showConfirmButton: false,
-//             timer: 1500,
-//           }).then(() => {
-//             // Lưu trạng thái đăng nhập
-//             localStorage.setItem("isLoggedIn", "true");
-//             window.location.href = "../html/dashboard.html";
-//           });
-//         } else {
-//           showError("emailError", "Email hoặc mật khẩu không đúng");
-//         }
-//       }
-//     });
-  
-//     // Hàm hiển thị lỗi
-//     function showError(elementId, message) {
-//       const errorElement = document.getElementById(elementId);
-//       errorElement.textContent = message;
-//       errorElement.style.display = "block"; // Hiển thị thông báo lỗi
-//     }
-  
-//     // Hàm xóa thông báo lỗi cũ
-//     function clearErrors() {
-//       const emailError = document.getElementById("emailError");
-//       const passwordError = document.getElementById("passwordError");
-//       emailError.textContent = "";
-//       emailError.style.display = "none"; // Ẩn thông báo lỗi
-//       passwordError.textContent = "";
-//       passwordError.style.display = "none"; // Ẩn thông báo lỗi
-//     }
-//   });
+// const form = document.querySelector(".container_box");
+// const email = document.getElementById("email");
+// const password = document.getElementById("password");
+
+// const errorEmail = document.getElementById("error-email");
+// const errorPassword = document.getElementById("error-password");
+
+// // Hàm kiểm tra email hợp lệ
+// function isValidEmail(email) {
+//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   return emailRegex.test(email);
+// }
+
+// // Xử lý sự kiện khi submit form
+// form.addEventListener("submit", function (event) {
+//   event.preventDefault(); 
+//   let isValid = true;
+
+//   // Reset các thông báo lỗi
+//   errorEmail.style.display = "none";
+//   errorPassword.style.display = "none";
+
+//   // Kiểm tra Email
+//   if (!email.value.trim()) {
+//     errorEmail.textContent = "Vui lòng nhập email!";
+//     errorEmail.style.display = "block";
+//     isValid = false;
+//   } else if (!isValidEmail(email.value)) {
+//     errorEmail.textContent = "Email không đúng định dạng!";
+//     errorEmail.style.display = "block";
+//     isValid = false;
+//   }
+
+//   // Kiểm tra Mật khẩu
+//   if (!password.value.trim()) {
+//     errorPassword.textContent = "Vui lòng nhập mật khẩu!";
+//     errorPassword.style.display = "block";
+//     isValid = false;
+//   } else if (password.value.length < 8) {
+//     errorPassword.textContent = "Mật khẩu phải tối thiểu 8 ký tự!";
+//     errorPassword.style.display = "block";
+//     isValid = false;
+//   }
+// // Chuyển trang 
+//   if (isValid) {
+//     alert("Đăng nhập thành công!");
+//     window.location.href = "../html/dashboard.html";
+//   }
+// });
 
 
 const form = document.querySelector(".container_box");
@@ -71,46 +56,93 @@ const password = document.getElementById("password");
 const errorEmail = document.getElementById("error-email");
 const errorPassword = document.getElementById("error-password");
 
-// Hàm kiểm tra email hợp lệ
+// Hàm kiểm tra định dạng email
 function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
 }
 
-// Xử lý sự kiện khi submit form
+// Hiển thị lỗi
+function showError(element, errorElement, message) {
+  errorElement.textContent = message;
+  errorElement.style.display = "block";
+  element.classList.add("error-border");
+}
+
+// Ẩn lỗi
+function hideError(element, errorElement) {
+  errorElement.style.display = "none";
+  element.classList.remove("error-border");
+}
+
+// Kiểm tra khi blur - EMAIL
+email.addEventListener("blur", function () {
+  const value = email.value.trim();
+  if (value === "") {
+    showError(email, errorEmail, "Email không được để trống");
+  } else if (!isValidEmail(value)) {
+    showError(email, errorEmail, "Email không đúng định dạng");
+  } else {
+    hideError(email, errorEmail);
+  }
+});
+
+// Kiểm tra khi blur - PASSWORD
+password.addEventListener("blur", function () {
+  const value = password.value.trim();
+  if (value === "") {
+    showError(password, errorPassword, "Mật khẩu không được để trống");
+  } else if (value.length < 8) {
+    showError(password, errorPassword, "Mật khẩu phải tối thiểu 8 ký tự");
+  } else {
+    hideError(password, errorPassword);
+  }
+});
+
+// Xử lý khi submit form
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); 
+  event.preventDefault();
+
+  const emailValue = email.value.trim();
+  const passwordValue = password.value;
+
   let isValid = true;
 
-  // Reset các thông báo lỗi
-  errorEmail.style.display = "none";
-  errorPassword.style.display = "none";
-
-  // Kiểm tra Email
-  if (!email.value.trim()) {
-    errorEmail.textContent = "Vui lòng nhập email!";
-    errorEmail.style.display = "block";
+  // Kiểm tra email
+  if (emailValue === "") {
+    showError(email, errorEmail, "Email không được để trống");
     isValid = false;
-  } else if (!isValidEmail(email.value)) {
-    errorEmail.textContent = "Email không đúng định dạng!";
-    errorEmail.style.display = "block";
+  } else if (!isValidEmail(emailValue)) {
+    showError(email, errorEmail, "Email không đúng định dạng");
     isValid = false;
+  } else {
+    hideError(email, errorEmail);
   }
 
-  // Kiểm tra Mật khẩu
-  if (!password.value.trim()) {
-    errorPassword.textContent = "Vui lòng nhập mật khẩu!";
-    errorPassword.style.display = "block";
+  // Kiểm tra password
+  if (passwordValue === "") {
+    showError(password, errorPassword, "Mật khẩu không được để trống");
     isValid = false;
-  } else if (password.value.length < 8) {
-    errorPassword.textContent = "Mật khẩu phải tối thiểu 8 ký tự!";
-    errorPassword.style.display = "block";
+  } else if (passwordValue.length < 8) {
+    showError(password, errorPassword, "Mật khẩu phải tối thiểu 8 ký tự");
     isValid = false;
+  } else {
+    hideError(password, errorPassword);
   }
 
-  // Nếu tất cả hợp lệ, hiển thị thông báo và chuyển hướng
+  // Nếu dữ liệu hợp lệ thì kiểm tra trong localStorage
   if (isValid) {
-    alert("Đăng nhập thành công!");
-    window.location.href = "../html/dashboard.html";// Chuyển hướng đến trang chủ
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const matchedUser = users.find(
+      user => user.email === emailValue && user.password === passwordValue
+    );
+
+    if (matchedUser) {
+      alert("Đăng nhập thành công!");
+      window.location.href = "../html/dashboard.html";
+    } else {
+      showError(email, errorEmail, "Email hoặc mật khẩu không đúng");
+      showError(password, errorPassword, "");
+    }
   }
 });

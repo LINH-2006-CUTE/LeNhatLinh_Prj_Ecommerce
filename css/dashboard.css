@@ -102,10 +102,10 @@ body {
   
   #log-out {
     /* z-index: 1000;  */
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 32px !important;
-    height: 32px !important;
+    margin: 0;
+    padding: 0 ;
+    width: 32px;
+    height: 32px ;
     color: #000000 !important;
     /* background-color: green; */
   }

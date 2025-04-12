@@ -31,9 +31,9 @@ let categories = [
           <td>${category.code}</td>
           <td>${category.name}</td>
           <td>
-            <span class="${category.status === 'active' ? 'status-active' : 'status-inactive'}">
-             ${category.status === 'active' ? 'Đang hoạt động' : 'Ngừng hoạt động'}
-            </span>
+            <span class="status ${product.status}">${
+            category.status === "active" ? "&#8226;  Đang hoạt động" : "&#8226;  Ngừng hoạt động"
+          }</span>
           </td>
           <td>
             <button class="btn btn-sm btn-danger" onclick="deleteCategory('${category.code}')"><i class="fas fa-trash"></i></button>
