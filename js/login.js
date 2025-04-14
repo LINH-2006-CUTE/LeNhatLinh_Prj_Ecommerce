@@ -1,7 +1,6 @@
 const form = document.querySelector(".container_box");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-
 const errorEmail = document.getElementById("error-email");
 const errorPassword = document.getElementById("error-password");
 
@@ -25,55 +24,31 @@ function hideError(element, errorElement) {
 }
 
 // Kiểm tra khi blur - EMAIL
-email.addEventListener("blur", function () {
-  const value = email.value.trim();
-  if (!value ) {
-    showError(email, errorEmail, "Email không được để trống");
-  } else if (!isValidEmail(value)) {
-    showError(email, errorEmail, "Email không đúng định dạng");
-  } else {
-    hideError(email, errorEmail);
-  }
-});
+// email.addEventListener("blur", function () {
+//   const value = email.value.trim();
+//   if (!value ) {
+//     showError(email, errorEmail, "Email không được để trống");
+//   } else if (!isValidEmail(value)) {
+//     showError(email, errorEmail, "Email không đúng định dạng");
+//   } else {
+//     hideError(email, errorEmail);
+//   }
+// });
 
 // Kiểm tra khi blur - PASSWORD
-password.addEventListener("blur", function () {
-  const value = password.value.trim();
-  if (value === "") {
-    showError(password, errorPassword, "Mật khẩu không được để trống");
-  } else if (value.length < 8) {
-    showError(password, errorPassword, "Mật khẩu phải tối thiểu 8 ký tự");
-  } else {
-    hideError(password, errorPassword);
-  }
-});
+// password.addEventListener("blur", function () {
+//   const value = password.value.trim();
+//   if (value === "") {
+//     showError(password, errorPassword, "Mật khẩu không được để trống");
+//   } else if (value.length < 8) {
+//     showError(password, errorPassword, "Mật khẩu phải tối thiểu 8 ký tự");
+//   } else {
+//     hideError(password, errorPassword);
+//   }
+// });
+
 
 // Xử lý khi submit form
-form.addEventListener("submit", function (event) {
-  event.preventDefault(); // Ngăn form submit
-
-  const emailValue = email.value.trim();
-  const passwordValue = password.value;
-
-  let isValid = true;
-
- 
-  // Nếu dữ liệu hợp lệ thì kiểm tra trong localStorage
-  if (isValid) {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const matchedUser  = users.find(
-      user => user.email === emailValue && user.password === passwordValue
-    );
-
-    // if (matchedUser ) {
-    //   alert("Đăng nhập thành công!");
-    //   window.location.href = "../html/dashboard.html";
-    // } else {
-    //   showError(email, errorEmail, "Email hoặc mật khẩu không đúng");
-    //   showError(password, errorPassword, ""); 
-    // }
-  }
-});// Xử lý khi submit form
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // Ngăn form submit
 
@@ -93,9 +68,8 @@ form.addEventListener("submit", function (event) {
     } else {
       hideError(email, errorEmail);
     }
-}
-
-  // Kiểm tra password
+  }
+    // Kiểm tra password
   if (!passwordValue) {
     showError(password, errorPassword, "Mật khẩu không được để trống");
     isValid = false;
@@ -107,20 +81,16 @@ form.addEventListener("submit", function (event) {
       hideError(password, errorPassword);
     }
   }
-
   // Nếu dữ liệu hợp lệ thì kiểm tra trong localStorage
   if (isValid) {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const matchedUser  = users.find(
-      user => user.email === emailValue && user.password === passwordValue
-    );
-
-    if (matched-users ) {
-      alert("Đăng nhập thành công!");
-      window.location.href = "../html/dashboard.html";
-    } else {
-      showError(email, errorEmail, "Email hoặc mật khẩu không đúng");
-      showError(password, errorPassword, ""); 
-    }
+  
+    // if (matched-users ) {
+    //   alert("Đăng nhập thành công!");
+    //   // window.location.href = "../html/dashboard.html";
+    // } else {
+    //   showError(email, errorEmail, "Email hoặc mật khẩu không đúng");
+    //   showError(password, errorPassword, ""); 
+    // }
   }
 });
