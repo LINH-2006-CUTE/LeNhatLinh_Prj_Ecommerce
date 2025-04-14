@@ -66,12 +66,21 @@ body {
   .sidebar-menu li.active a {
     color: white;
   }
-  
+
   .main-content {
     margin-left: 250px;
     width: calc(100% - 250px);
     padding: 20px;
   }
+
+  /* .modal-content {
+    width: 700px;
+    height: 417px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    margin: 0 auto; 
+
+  } */
   
   header {
     display: flex;

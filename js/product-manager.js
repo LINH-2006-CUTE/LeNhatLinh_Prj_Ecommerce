@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
   let products = JSON.parse(localStorage.getItem("products")) || [
     {
@@ -9,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
       quantity: 10,
       discount: 0,
       status: "active",
-      category: "DM008", // Điện thoại
+      category: "DM008", 
       image: "",
       detail: "",
       createdAt: "2025-04-01T10:00:00",
@@ -21,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       quantity: 100,
       discount: 5,
       status: "inactive",
-      category: "DM008", // Điện thoại
+      category: "DM008", 
       image: "",
       detail: "",
       createdAt: "2025-04-02T12:00:00",
@@ -33,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
       quantity: 10,
       discount: 0,
       status: "active",
-      category: "DM008", // Điện thoại
+      category: "DM008", 
       image: "",
       detail: "",
       createdAt: "2025-04-03T14:00:00",
@@ -45,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
       quantity: 20,
       discount: 2,
       status: "inactive",
-      category: "DM008", // Điện thoại
+      category: "DM008", 
       image: "",
       detail: "",
       createdAt: "2025-04-04T16:00:00",
@@ -57,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       quantity: 10,
       discount: 5,
       status: "inactive",
-      category: "DM008", // Điện thoại
+      category: "DM008",
       image: "",
       detail: "",
       createdAt: "2025-04-05T18:00:00",
@@ -69,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
       quantity: 20,
       discount: 3,
       status: "inactive",
-      category: "DM008", // Điện thoại
+      category: "DM008", 
       image: "",
       detail: "",
       createdAt: "2025-04-06T20:00:00",
@@ -81,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       quantity: 10,
       discount: 4,
       status: "active",
-      category: "DM008", // Điện thoại
+      category: "DM008",
       image: "",
       detail: "",
       createdAt: "2025-04-07T22:00:00",
@@ -93,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
       quantity: 15,
       discount: 2,
       status: "inactive",
-      category: "DM008", // Điện thoại
+      category: "DM008",
       image: "",
       detail: "",
       createdAt: "2025-04-08T09:00:00",
@@ -113,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const statusFilter = document.getElementById("statusFilter");
   const searchInput = document.getElementById("searchInput");
 
-  // Thêm select cho sắp xếp (tương tự category_manager.js)
+  // Thêm select cho sắp xếp 
   const filterBar = document.querySelector(".filter-bar");
   const sortOption = document.createElement("select");
   sortOption.id = "sortOption";
@@ -244,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
     categoryFilter.innerHTML = '<option value="">Lọc theo danh mục</option>';
     const productCategoryInput = document.getElementById("productCategory");
 
-    // Thay vì dropdown, productCategory là input text, nên chỉ cần hiển thị danh sách trong categoryFilter
+    //productCategory là input text-> hiển thị danh sách trong categoryFilter
     categories.forEach((category) => {
       const option = document.createElement("option");
       option.value = category.code;
@@ -253,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Thêm/sửa sản phẩm
+  // Thêm /sửa sản phẩm
   const addProductForm = document.getElementById("addProductForm");
   let editIndex = -1;
   addProductForm.addEventListener("submit", function (e) {
@@ -269,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById("img-dashed").value.trim();
     const detail = document.getElementById("detail").value.trim();
 
-    let status = active ? "active" : inactive ? "inactive" : null;
+    let status = active ? "active" : inactive ? "inactive" : null; // xét phần phía sau có hay không
 
     // Validate
     let hasError = false;
@@ -421,9 +419,7 @@ document.addEventListener("DOMContentLoaded", function () {
       timer: 1500,
     });
   });
-
   
-
   // render lại
   loadCategories();
   renderProducts();
@@ -432,22 +428,34 @@ document.addEventListener("DOMContentLoaded", function () {
  // Đăng xuất khi nhấn avatar
 const logoutIcon = document.getElementById("avt-log-out");
 
-logoutIcon.addEventListener("click", function () {
-    if (confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
-        // Xóa trạng thái đăng nhập
-        localStorage.removeItem("isLoggedIn");
-        Swal.fire("Đăng xuất thành công!", "", "success");
-
-        setTimeout(function () {
-            window.location.href = "login.html";
-        }, 1500);
-    }
+logoutIcon.addEventListener("click", function (event) {
+  event.preventDefault(); // Ngăn hành vi mặc định nếu có
+  // Hiển thị modal đăng xuất
+  const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+  logoutModal.show();
 });
 
-window.addEventListener("load", function () {
-// chuyển hướng về trang đăng nhập
-//     if (!localStorage.getItem("isLoggedIn")) {
-//         window.location.href = "login.html";
-//     }
-// });
+// Xử lý khi nhấn nút "Đăng Xuất" trong modal
+const confirmLogoutBtn = document.getElementById("confirmLogoutBtn");
+confirmLogoutBtn.addEventListener("click", function () {
+  // Xóa trạng thái đăng nhập
+  localStorage.removeItem("isLoggedIn");
+
+  // Ẩn modal
+  const logoutModal = bootstrap.Modal.getInstance(document.getElementById("logoutModal"));
+  logoutModal.hide();
+
+  // Hiển thị thông báo đăng xuất thành công
+  Swal.fire({
+    icon: "success",
+    title: "Đăng xuất thành công!",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+
+  // Chuyển hướng về trang đăng nhập sau 1.5 giây
+  setTimeout(function () {
+    window.location.href = "login.html";
+  }, 1500);
 });
+
