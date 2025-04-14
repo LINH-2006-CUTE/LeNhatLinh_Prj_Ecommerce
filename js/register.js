@@ -200,7 +200,10 @@ form.addEventListener("submit", function (event) {
   event.preventDefault();
   let error = false;
 
-  if (!error) {
+  // validate
+  
+
+  if (firstName.value.trim() && userName.value.trim() ) {
     const newUser = {
       firstName: firstName.value.trim(),
       userName: userName.value.trim(),
@@ -214,5 +217,5 @@ form.addEventListener("submit", function (event) {
 
     alert("Đăng ký thành công!");
     window.location.href = "../html/login.html";
-  }
+  } 
 });

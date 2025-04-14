@@ -358,8 +358,10 @@ gap: 12px;
 /* Thêm mới sản phẩm*/
 
 .modal-header {
-    width: 195px;
-height: 24px;
+    /* width: 195px; */
+height: fit-content;
+width: 100%;
+padding: 24px;
 
 }
 .modal-title {
@@ -367,13 +369,15 @@ height: 24px;
 font-weight: 600;
 font-size: 20px;
 line-height: 24px;
+
 }
 
 
 .modal-content {
     width: 900px;
-    height: 705px;
+    height: fit-content;
     border-radius: 8px;
+
 }
 .btn-close {
 }
@@ -382,24 +386,27 @@ line-height: 24px;
 .add-product-box {
     display: flex;
     gap: 23px;
+    justify-content: space-between;
 }
 .tag-product {
     width: 417px;
     height: 77px;
 }
 
-.form-label {
+.modal-bodyy label {
+  font-weight: 600;
 }
 .form-control {
 }
 .name-product {
     width: 418px;
     height: 86px;
-
+margin-right: 0;
 }
 .price-product-box {
     display: flex;
     gap: 20px;
+    justify-content: space-between;
 }
 .category-product{
     display: flex;
@@ -422,8 +429,11 @@ height: 77px;
    border: 1px solid #D0D5DD;
     
 }
-
-
+.mb-3 {
+  height: 77px;
+  width: 262px;
+  gap: 24px;
+}
 /* Phân trang  */
 .pagination {
     display: flex;

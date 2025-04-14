@@ -27,7 +27,7 @@ function hideError(element, errorElement) {
 // Kiểm tra khi blur - EMAIL
 email.addEventListener("blur", function () {
   const value = email.value.trim();
-  if (value === "") {
+  if (!value ) {
     showError(email, errorEmail, "Email không được để trống");
   } else if (!isValidEmail(value)) {
     showError(email, errorEmail, "Email không đúng định dạng");
@@ -65,43 +65,47 @@ form.addEventListener("submit", function (event) {
       user => user.email === emailValue && user.password === passwordValue
     );
 
-    if (matchedUser ) {
-      alert("Đăng nhập thành công!");
-      window.location.href = "../html/dashboard.html";
-    } else {
-      showError(email, errorEmail, "Email hoặc mật khẩu không đúng");
-      showError(password, errorPassword, ""); 
-    }
+    // if (matchedUser ) {
+    //   alert("Đăng nhập thành công!");
+    //   window.location.href = "../html/dashboard.html";
+    // } else {
+    //   showError(email, errorEmail, "Email hoặc mật khẩu không đúng");
+    //   showError(password, errorPassword, ""); 
+    // }
   }
 });// Xử lý khi submit form
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // Ngăn form submit
 
   const emailValue = email.value.trim();
-  const passwordValue = password.value;
+  const passwordValue = password.value.trim();
 
   let isValid = true;
 
   // Kiểm tra email
-  if (emailValue === "") {
+  if (!emailValue) {
     showError(email, errorEmail, "Email không được để trống");
     isValid = false;
-  } else if (!isValidEmail(emailValue)) {
-    showError(email, errorEmail, "Email không đúng định dạng");
-    isValid = false;
-  } else {
-    hideError(email, errorEmail);
-  }
+  }else{
+    if (!isValidEmail(emailValue)) {
+      showError(email, errorEmail, "Email không đúng định dạng");
+      isValid = false;
+    } else {
+      hideError(email, errorEmail);
+    }
+}
 
   // Kiểm tra password
-  if (passwordValue === "") {
+  if (!passwordValue) {
     showError(password, errorPassword, "Mật khẩu không được để trống");
     isValid = false;
-  } else if (passwordValue.length < 8) {
-    showError(password, errorPassword, "Mật khẩu phải tối thiểu 8 ký tự");
-    isValid = false;
-  } else {
-    hideError(password, errorPassword);
+  }else{
+    if (passwordValue.length < 8) {
+      showError(password, errorPassword, "Mật khẩu phải tối thiểu 8 ký tự");
+      isValid = false;
+    } else {
+      hideError(password, errorPassword);
+    }
   }
 
   // Nếu dữ liệu hợp lệ thì kiểm tra trong localStorage
@@ -111,7 +115,7 @@ form.addEventListener("submit", function (event) {
       user => user.email === emailValue && user.password === passwordValue
     );
 
-    if (matched-user ) {
+    if (matched-users ) {
       alert("Đăng nhập thành công!");
       window.location.href = "../html/dashboard.html";
     } else {
